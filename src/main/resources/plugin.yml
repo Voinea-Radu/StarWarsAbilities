@@ -1,0 +1,5 @@
+name: StarWarsAbilities
+version: '${project.version}'
+main: dev.lightdream.starwarsabilities.Main
+authors: [ LightDream ]
+website: https://lightdream.dev
