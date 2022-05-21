@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-@Command(aliases = {"debug"}, permission = "starwarsabilities.debug", onlyForPlayers = true)
+@Command(aliases = {"sw-debug"}, permission = "starwarsabilities.debug", onlyForPlayers = true)
 public class DebugCommand extends dev.lightdream.commandmanager.commands.Command {
     public DebugCommand(CommandMain main) {
         super(main);
