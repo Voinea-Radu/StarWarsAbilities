@@ -8,8 +8,12 @@ import dev.lightdream.filemanager.FileManagerMain;
 import dev.lightdream.logger.LoggableMain;
 import dev.lightdream.logger.Logger;
 import dev.lightdream.messagebuilder.MessageBuilderManager;
+import dev.lightdream.starwarsabilities.ability.*;
 import dev.lightdream.starwarsabilities.conifg.Config;
 import dev.lightdream.starwarsabilities.conifg.Lang;
+import dev.lightdream.starwarsabilities.manager.AbilityManager;
+import dev.lightdream.starwarsabilities.manager.EventManager;
+import dev.lightdream.starwarsabilities.manager.ScheduleManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin implements CommandMain, LoggableMain, FileManagerMain {
@@ -23,6 +27,9 @@ public final class Main extends JavaPlugin implements CommandMain, LoggableMain,
     // Managers
     public CommandManager commandManager;
     public FileManager fileManager;
+    public AbilityManager abilityManager;
+    public EventManager eventManager;
+    public ScheduleManager scheduleManager;
 
 
     @Override
@@ -35,6 +42,20 @@ public final class Main extends JavaPlugin implements CommandMain, LoggableMain,
         loadConfigs();
 
         this.commandManager = new CommandManager(this);
+        this.abilityManager = new AbilityManager();
+        this.eventManager = new EventManager();
+        this.scheduleManager = new ScheduleManager();
+
+        loadAbilities();
+    }
+
+    public void loadAbilities() {
+        abilityManager.registerAbility(new ForceThrow());
+        abilityManager.registerAbility(new RallyingCry());
+        abilityManager.registerAbility(new DarkSideFury());
+        abilityManager.registerAbility(new Resurrection());
+        abilityManager.registerAbility(new Grappling());
+        abilityManager.registerAbility(new JetPack());
     }
 
     public void loadConfigs() {
